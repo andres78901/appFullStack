@@ -1,0 +1,42 @@
+services:
+  mongodb:
+    image: mongo:6
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+      - ./database_init.js:/docker-entrypoint-initdb.d/init.js:ro
+
+  api:
+    build:
+      context: ./backend/src
+      dockerfile: Dockerfile
+    container_name: api
+    ports:
+      - "5001:5000"
+    environment:
+      - ASPNETCORE_URLS=http://+:5001
+      - JwtSettings__Secret=ThisIsASecretKeyForJWT_DoChangeInProd_ReplaceWithSecure
+      - JwtSettings__Issuer=realestate_api
+      - JwtSettings__Audience=realestate_clients
+      - JwtSettings__ExpiryMinutes=1440
+      - MongoSettings__ConnectionString=mongodb://mongodb:27017
+      - MongoSettings__DatabaseName=realestate_db
+    depends_on:
+      - mongodb
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:5001/api
+    depends_on:
+      - api
+
+volumes:
+  mongo_data:
