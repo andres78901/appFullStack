@@ -10,6 +10,7 @@ Api con todos los medotos necesario para el CRUD y se implementa el JWT donde se
 - Frontend: http://localhost:3000
 - MongoDB: mongodb://localhost:27017
 ### Cumpilacion Docker
+Es necesario tener instalado docker para poder ejecutar los ambiéntese (base de datos, backend y frontend)
 ```
 docker-compose up --build
 ```
