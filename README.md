@@ -1,16 +1,16 @@
 # FullStack Andres Lopez Rodriguez
 
 ### Frontend
-Se realiza api de actualizacion eliminacion y crecion el CRUD completo desde el front-end
+Se desarrolla una API para actualización, eliminación y creación, implementando el CRUD completo desde el front-end.
 
 ### Backend
-Api con todos los medotos necesario para el CRUD y se implementa el JWT donde se ve en el Swagger UI
+API con todos los métodos necesarios para el CRUD, con implementación de JWT, visible en Swagger UI.
 ### End Point Expuestos
 - API (Swagger): http://localhost:5001/swagger
 - Frontend: http://localhost:3000
 - MongoDB: mongodb://localhost:27017
 ### Cumpilacion Docker
-Es necesario tener instalado docker para poder ejecutar los ambiéntese (base de datos, backend y frontend)
+Es necesario tener Docker instalado para poder ejecutar los ambientes (base de datos, backend y frontend).
 ```
 docker-compose up --build
 ```
