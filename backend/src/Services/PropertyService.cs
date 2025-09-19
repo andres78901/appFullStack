@@ -30,8 +30,7 @@ namespace RealEstate.Api.Services {
             existing.AddressProperty = dto.AddressProperty;
             existing.PriceProperty = dto.PriceProperty;
             existing.ImageUrl = dto.ImageUrl;
-            // Si quieres permitir actualizar el owner, descomenta la siguiente línea
-            // existing.IdOwner = dto.IdOwner;
+
             await _repo.UpdateAsync(id, existing);
             return new PropertyDto {
                 Id = existing.Id,

@@ -25,7 +25,6 @@ builder.Services.AddSwaggerGen(c => {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "RealEstate API", Version = "v1" });
 });
 
-// JWT
 var jwt = builder.Configuration.GetSection("JwtSettings");
 var secret = jwt["Secret"] ?? "secret_for_dev_replace";
 builder.Services.AddAuthentication(options => {
@@ -44,7 +43,7 @@ builder.Services.AddAuthentication(options => {
     };
 });
 
-// CORS
+
 builder.Services.AddCors(options => {
     options.AddPolicy("AllowFrontend", p => p.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod());
 });
